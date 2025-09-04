@@ -1,35 +1,51 @@
-<!DOCTYPE html>
+// Smooth scrolling
 
-<html lang="en">
+document.querySelectorAll('nav a').forEach(link => {
 
-<head>
+  link.addEventListener('click', function(e) {
 
-  <meta charset="UTF-8">
+    e.preventDefault();
 
-  <title>Simple JS Example</title>
+    document.querySelector(this.getAttribute('href'))
 
-</head>
+      .scrollIntoView({ behavior: 'smooth' });
 
-<body>
+  });
 
-  <h1>Welcome to My Portfolio</h1>
+});
 
-  <p>Click the button to see a message:</p>
+// Mobile menu toggle
 
-  <button onclick="showMessage()">Click Me</button>
+const menuToggle = document.getElementById('menu-toggle');
 
-  <p id="message"></p>
+const nav = document.getElementById('navbar');
 
-  <script>
+menuToggle.addEventListener('click', () => {
 
-    function showMessage() {
+  nav.classList.toggle('show');
 
-      document.getElementById("message").textContent = "Hello! I'm Venisha, a future web developer!";
+});
 
-    }
+// Back to Top button
 
-  </script>
+const backToTop = document.getElementById('back-to-top');
 
-</body>
+window.addEventListener('scroll', () => {
 
-</html>
+  if (window.scrollY > 300) {
+
+    backToTop.style.display = 'block';
+
+  } else {
+
+    backToTop.style.display = 'none';
+
+  }
+
+});
+
+backToTop.addEventListener('click', () => {
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+});
